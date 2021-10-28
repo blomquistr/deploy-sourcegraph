@@ -12,15 +12,15 @@ After executing the script you can apply the generated manifests from the `gener
 
 ```shell script
 minikube start
-kubectl create namespace ns-sourcegraph
-kubectl -n ns-sourcegraph apply --prune -l deploy=sourcegraph -f generated-cluster --recursive
-kubectl -n ns-sourcegraph expose deployment sourcegraph-frontend --type=NodePort --name sourcegraph --port=3080 --target-port=3080
+kubectl create namespace sourcegraph
+kubectl -n sourcegraph apply --prune -l deploy=sourcegraph -f generated-cluster --recursive
+kubectl -n sourcegraph expose deployment sourcegraph-frontend --type=NodePort --name sourcegraph --port=3080 --target-port=3080
 minikube service list
 ``` 
 
 Tearing it down:
 
 ```shell script
-kubectl delete namespaces ns-sourcegraph
+kubectl delete namespaces sourcegraph
 minikube stop
 ``` 

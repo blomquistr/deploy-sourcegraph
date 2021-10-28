@@ -29,7 +29,7 @@ const nameSpace = new k8s.core.v1.Namespace(
     'sourcegraph-namespace',
     {
         metadata: {
-            name: 'ns-sourcegraph',
+            name: 'sourcegraph',
         },
     },
     { provider: k8sProvider }
