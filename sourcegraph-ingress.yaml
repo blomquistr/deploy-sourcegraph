@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sourcegraph
+  namespace: sourcegraph
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+    - hosts:
+        - sourcegraph.dsnus7dinternalkube.k8s.mrll.com
+      secretName: soteria-k8s-test-secret # this secret is generated in every namespace that's created through k8s-cloud-system; if you need it, we can add your POC namespace to the k8s-cloud-system
+  rules:
+    - host: sourcegraph.dsnus7dinternalkube.k8s.mrll.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sourcegraph-frontend 
+                port:
+                  number: 30080
