@@ -17,12 +17,13 @@ metadata:
 spec:
   # See the customization guide (../../../docs/configure.md) for information
   # about configuring TLS
-  # tls:
-  # - hosts:
-  #   - sourcegraph.example.com
-  #   secretName: sourcegraph-tls
+  tls:
+  - hosts:
+    - sourcegraph-frontend.dsnus7dinternalkube.k8s.mrll.com
+    secretName: soteria-namespace-cert
   rules:
-  - http:
+  - host: sourcegraph-frontend.dsnus7dinternalkube.k8s.mrll.com
+    http:
       paths:
       - path: /
         backend:
